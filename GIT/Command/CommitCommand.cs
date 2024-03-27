@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GIT.Command
+﻿namespace GIT.Command
 {
     internal class CommitCommand : CommandsOnBranch
     {
+        #region propertys
+        public CommitCommand(IGitItem b) : base(b)
+        {
+        }
+        #endregion
+
+
         #region function
         public override void excute()
         {
-            throw new NotImplementedException();
+            branch.Commit();
         }
         #endregion
     }

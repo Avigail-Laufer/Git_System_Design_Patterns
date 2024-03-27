@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GIT.Branches
+﻿namespace GIT.Branches
 {
-    internal class Branch:ICloneable
+    internal class Branch : ICloneable, IGitItem
     {
-        #region proprty
+        #region propertys
         public string Name { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public double Size { get; set; }
-        //public list<fileSystem> GeneralFile { get; set; }
-        public Branch() { }
+        public List<FileSystem> GeneralFile { get; set; }
+        public Branch()
+        {
+            GeneralFile = new List<FileSystem>();
+        }
 
 
         #endregion
@@ -24,21 +20,32 @@ namespace GIT.Branches
         {
             throw new NotImplementedException();
         }
-        public  Boolean Delete()
+        public Boolean Delete()
         {
-            return true;
+            Console.WriteLine("you soure that you want to delete this branch");
+            string c = Console.ReadLine();
+            if (c.Equals("yes"))
+            {
+                this.Delete();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        public Boolean Merge()
+        public Boolean Merge(IGitItem item)
         {
-            return false;
+            Console.WriteLine("I passed from Merge");
+            return true;
         }
         public void Review()
         {
-
+         
         }
         public void Commit()
         {
-
+         Console.WriteLine("I pass to commite state");
         }
         #endregion
     }

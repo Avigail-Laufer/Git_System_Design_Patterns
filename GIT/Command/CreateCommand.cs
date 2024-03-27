@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GIT.Command
+﻿namespace GIT.Command
 {
     internal class CreateCommand : CommandsOnBranch
     {
+        public CreateCommand(IGitItem b) : base(b)
+        {
+        }
+
         #region function
         public override void excute()
         {

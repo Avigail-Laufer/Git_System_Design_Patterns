@@ -1,24 +1,25 @@
-﻿namespace GIT.States
+﻿
+
+namespace GIT.States
 {
-    internal class CommitState : State
+    internal class ErorStates : State
     {
-        public CommitState(FileSystem file) : base(file)
+        public ErorStates(FileSystem file) : base(file)
         {
         }
-
         public override void Commit()
-        {
-            throw new InvalidStateException("You are in the desired state ");
-        }
-
-        public override void Darft()
         {
             file.ChangeState(new Draftstate(file));
         }
 
+        public override void Darft()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void ErorState()
         {
-            file.ChangeState(new ErorStates(file));
+            throw new InvalidCastException("You are in the ErorState state");
         }
 
         public override void GetMessage()
@@ -28,12 +29,12 @@
 
         public override void Staged()
         {
-            throw new InvalidStateException("No permission to switch to Staged state ");
+            throw new NotImplementedException();
         }
 
         public override void underReview()
         {
-           file.ChangeState(new underReviewState(file));
+            file.ChangeState(new Draftstate(file));
         }
     }
 }

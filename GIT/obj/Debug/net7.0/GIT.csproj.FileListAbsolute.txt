@@ -1,0 +1,15 @@
+H:\GIT\GITProject\GIT\bin\Debug\net7.0\GIT.exe
+H:\GIT\GITProject\GIT\bin\Debug\net7.0\GIT.deps.json
+H:\GIT\GITProject\GIT\bin\Debug\net7.0\GIT.runtimeconfig.json
+H:\GIT\GITProject\GIT\bin\Debug\net7.0\GIT.dll
+H:\GIT\GITProject\GIT\bin\Debug\net7.0\GIT.pdb
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.AssemblyReference.cache
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.GeneratedMSBuildEditorConfig.editorconfig
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfoInputs.cache
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfo.cs
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.CoreCompileInputs.cache
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.dll
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\refint\GIT.dll
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.pdb
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.genruntimeconfig.cache
+H:\GIT\GITProject\GIT\obj\Debug\net7.0\ref\GIT.dll

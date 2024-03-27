@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GIT.Command
+﻿namespace GIT.Command
 {
     internal class ReviewCommand : CommandsOnBranch
     {
+        #region ctor
+        public ReviewCommand(IGitItem b) : base(b)
+        {
+        }
+        #endregion
+
         #region function
         public override void excute()
         {
-            throw new NotImplementedException();
+            branch.Review();
         }
         #endregion
     }
