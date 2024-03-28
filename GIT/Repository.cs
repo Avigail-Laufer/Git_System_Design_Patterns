@@ -5,7 +5,7 @@
         #region property
         public string Name { get; set; }
         public string Description { get; set; }
-        List<Branch> Branches { get; set; }
+        public List<Branch> Branches { get; set; }
 
         public Repository(string name, string description)
         {

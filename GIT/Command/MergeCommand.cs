@@ -4,16 +4,18 @@
     {
         #region ctor
         public IGitItem item { get; set; }
-        public MergeCommand(IGitItem b, IGitItem item) : base(b)
+        public Repository project { get; set; }
+        public MergeCommand(IGitItem b, IGitItem item , Repository project) : base(b)
         {
             this.item = item;
+            this.project = project;
         }
         #endregion
 
         #region function
         public override void excute()
         {
-            branch.Merge(item);
+            branch.Merge(item,project);
         }
         #endregion
     }

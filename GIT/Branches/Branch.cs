@@ -18,9 +18,15 @@
         #region function
         public object Clone()
         {
-            throw new NotImplementedException();
+            Branch newBranch = new Branch();
+            newBranch.Name = this.Name;
+            newBranch.ManufacturingDate=DateTime.Now;
+            newBranch.Size = this.Size;
+            //האם לעשות את הקבצים prototype?
+            return newBranch;
+
         }
-        public Boolean Delete()
+        public bool Delete()
         {
             Console.WriteLine("you soure that you want to delete this branch");
             string c = Console.ReadLine();
@@ -34,14 +40,26 @@
                 return false;
             }
         }
-        public Boolean Merge(IGitItem item)
+        public bool Merge(IGitItem item, Repository project)
         {
+            if(item.GetType() == typeof(Branch)) 
+            {
+                var newBranch = (Branch)item;
+                foreach (var i in newBranch.GeneralFile)
+                {
+                    this.GeneralFile.Add(i);
+                }
+             //project.Branches.Remove(item);
+            }
+            else
+            {
+                var newFile=(FileSystem)item;
+                this.GeneralFile.Add(newFile);
+                //צריך למחוק פה את הקובץ מתוך הבראנץ
+                //item.Remove();
+            }
             Console.WriteLine("I passed from Merge");
             return true;
-        }
-        public void Review()
-        {
-         
         }
         public void Commit()
         {

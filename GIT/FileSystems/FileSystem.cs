@@ -25,14 +25,18 @@ internal abstract class FileSystem : IGitItem
         for (int i = 0; i < depth; i++, indent += "\t") ;
         return indent;
     }
-
-    public Boolean Delete()
+    public bool remove(IGitItem item)
+    {
+        item=null;
+        return true;
+    }
+    public bool Delete()
     {
         Console.WriteLine("you soure that you want to delete this file");
         string c = Console.ReadLine();
         if (c.Equals("yes"))
         {
-            this.Delete();
+            remove(this);
             return true;
         }
         else
@@ -40,7 +44,7 @@ internal abstract class FileSystem : IGitItem
             return false;
         }
     }
-    public Boolean Merge(IGitItem item)
+    public bool Merge(IGitItem item,Repository project)
     {
 
         if (this.GetType()==typeof(File)&&item.GetType()!=typeof(File)|| this.GetType() == typeof(Folder) && item.GetType() != typeof(Branch))
@@ -53,6 +57,7 @@ internal abstract class FileSystem : IGitItem
             this.curentState.ErorState();
             return false;
         }
+        //צריך להעביר את התוכן ולמחוק
         FileSystem f = (FileSystem)item;
         f.curentState.Staged();
         Console.WriteLine("I passed from Merge");
@@ -74,6 +79,22 @@ internal abstract class FileSystem : IGitItem
             Console.WriteLine("The request failed");
             this.curentState.ErorState();
         }
+
+    }
+    public void UndoTheCommit()
+    {
+        switch (this.curentState)
+        {
+            case CommitState:
+                  ChangeState(new Draftstate(this));
+                break;
+            case underReviewState:
+                ChangeState(new Draftstate(this));
+                break;
+            case State:
+                throw new InvalidStateException("you dont showld to commited");
+        }
+       
 
     }
     #endregion

@@ -2,13 +2,10 @@
 {
     internal interface IGitItem
     {
-        public Boolean Delete();
+        public bool Delete();
 
-        public Boolean Merge(IGitItem item);
-
-        public void Review();
-
+        public bool Merge(IGitItem item,Repository project);
         public void Commit();
-        
+
     }
 }
