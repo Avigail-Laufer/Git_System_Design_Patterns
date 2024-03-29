@@ -7,6 +7,7 @@
         public DateTime ManufacturingDate { get; set; }
         public double Size { get; set; }
         public List<FileSystem> filesSysyem { get; set; }
+
         public Branch()
         {
             filesSysyem = new List<FileSystem>();
@@ -73,6 +74,10 @@
         {
 
          Console.WriteLine("I pass to commite state");
+        }
+        public void Review()
+        {
+
         }
         #endregion
     }

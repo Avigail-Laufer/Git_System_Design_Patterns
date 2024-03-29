@@ -7,7 +7,7 @@
         }
 
         #region function
-        public override void excute()
+        public override void Excute()
         {
             throw new NotImplementedException();
         }

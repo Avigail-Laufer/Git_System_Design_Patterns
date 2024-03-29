@@ -12,6 +12,7 @@ internal abstract class FileSystem : IGitItem
         Size = size;
         curentState = new Draftstate(this);
     }
+    List<FileSystem> file= new List<FileSystem>();
     #endregion
 
     #region function

@@ -5,6 +5,6 @@
         protected IGitItem branch { get; private set; }
         public CommandsOnBranch(IGitItem b) { branch = b; }
         
-        public abstract void excute();
+        public abstract void Excute();
     }
 }

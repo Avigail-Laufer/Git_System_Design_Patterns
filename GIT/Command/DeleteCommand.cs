@@ -3,15 +3,18 @@
     internal class DeleteCommand : CommandsOnBranch
     {
         #region ctor
-        public DeleteCommand(IGitItem b) : base(b)
+        Repository repository;
+        public DeleteCommand(IGitItem b,Repository repository) : base(b)
         {
+            this.repository = repository;
         }
         #endregion
 
         #region function
-        public override void excute()
+        public override void Excute()
         {
-            branch.Delete();
+            if (branch.GetType() == typeof(Branch))
+                (branch as Branch).Delete(repository);
         }
         #endregion
     }

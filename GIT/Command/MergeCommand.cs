@@ -13,7 +13,7 @@
         #endregion
 
         #region function
-        public override void excute()
+        public override void Excute()
         {
             branch.Merge(item,project);
         }

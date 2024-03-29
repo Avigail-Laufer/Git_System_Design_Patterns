@@ -5,6 +5,8 @@
 
         public bool Merge(IGitItem item,Repository project);
         public void Commit();
+        public void Review();
+       
 
     }
 }
