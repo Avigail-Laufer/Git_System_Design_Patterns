@@ -25,25 +25,6 @@ internal abstract class FileSystem : IGitItem
         for (int i = 0; i < depth; i++, indent += "\t") ;
         return indent;
     }
-    public bool remove(IGitItem item)
-    {
-        item=null;
-        return true;
-    }
-    public bool Delete()
-    {
-        Console.WriteLine("you soure that you want to delete this file");
-        string c = Console.ReadLine();
-        if (c.Equals("yes"))
-        {
-            remove(this);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
     public bool Merge(IGitItem item,Repository project)
     {
 

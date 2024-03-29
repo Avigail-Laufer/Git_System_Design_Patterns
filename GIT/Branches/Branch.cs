@@ -6,10 +6,10 @@
         public string Name { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public double Size { get; set; }
-        public List<FileSystem> GeneralFile { get; set; }
+        public List<FileSystem> filesSysyem { get; set; }
         public Branch()
         {
-            GeneralFile = new List<FileSystem>();
+            filesSysyem = new List<FileSystem>();
         }
 
 
@@ -26,13 +26,13 @@
             return newBranch;
 
         }
-        public bool Delete()
+        public bool Delete(Repository repository)
         {
             Console.WriteLine("you soure that you want to delete this branch");
             string c = Console.ReadLine();
             if (c.Equals("yes"))
             {
-                this.Delete();
+                repository.Branches.Remove(this);
                 return true;
             }
             else
@@ -44,25 +44,34 @@
         {
             if(item.GetType() == typeof(Branch)) 
             {
-                var newBranch = (Branch)item;
-                foreach (var i in newBranch.GeneralFile)
-                {
-                    this.GeneralFile.Add(i);
-                }
-             //project.Branches.Remove(item);
+
+                // עבור כל קובץ שנמצא באיטם
+                (item as Branch).filesSysyem.ForEach(f =>
+                {// תבדןק אם קים קבוץ בעל אותו שם בנוכחי
+                    var fs = this.filesSysyem.Find(ff => ff.Name == f.Name);
+                    //אם קים , תמחק אותו
+                    if (fs != null)
+                    // תמחק אותו
+                    // 
+                          this.filesSysyem.Remove(fs);
+                   this.filesSysyem.Add(f);   
+                    
+                   
+                });
+             
+               project.Branches.Remove(item as Branch );
             }
             else
             {
-                var newFile=(FileSystem)item;
-                this.GeneralFile.Add(newFile);
-                //צריך למחוק פה את הקובץ מתוך הבראנץ
-                //item.Remove();
+                this.filesSysyem.Add((item as FileSystem));
+
             }
             Console.WriteLine("I passed from Merge");
             return true;
         }
         public void Commit()
         {
+
          Console.WriteLine("I pass to commite state");
         }
         #endregion
