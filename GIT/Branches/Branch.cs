@@ -4,14 +4,18 @@
     {
         #region propertys
         public string Name { get; set; }
+        public List<string> commit { get; set; }
         public DateTime ManufacturingDate { get; set; }
-        public double Size { get; set; }
-        public List<FileSystem> filesSysyem { get; set; }
-
-        public Branch()
+        BranchShared branch;
+        public Repository repository;
+        public Branch(string name)
         {
-            filesSysyem = new List<FileSystem>();
+            Name = name;
+            ManufacturingDate= DateTime.Now;
+            branch =repository.GetEllipseDesign(Name);
+            commit = new List<string>();
         }
+        public Branch() { } 
 
 
         #endregion
@@ -21,9 +25,9 @@
         {
             Branch newBranch = new Branch();
             newBranch.Name = this.Name;
-            newBranch.ManufacturingDate=DateTime.Now;
-            newBranch.Size = this.Size;
-            //האם לעשות את הקבצים prototype?
+            newBranch.ManufacturingDate = DateTime.Now;
+            newBranch.repository = this.repository;
+            newBranch.branch=repository.GetEllipseDesign(Name);
             return newBranch;
 
         }
@@ -47,15 +51,15 @@
             {
 
                 // עבור כל קובץ שנמצא באיטם
-                (item as Branch).filesSysyem.ForEach(f =>
+                (item as Branch).branch.filesSysyem.ForEach(f =>
                 {// תבדןק אם קים קבוץ בעל אותו שם בנוכחי
-                    var fs = this.filesSysyem.Find(ff => ff.Name == f.Name);
+                    var fs = this.branch.filesSysyem.Find(ff => ff.Name == f.Name);
                     //אם קים , תמחק אותו
                     if (fs != null)
                     // תמחק אותו
                     // 
-                          this.filesSysyem.Remove(fs);
-                   this.filesSysyem.Add(f);   
+                          this.branch.filesSysyem.Remove(fs);
+                   this.branch.filesSysyem.Add(f);   
                     
                    
                 });
@@ -64,7 +68,7 @@
             }
             else
             {
-                this.filesSysyem.Add((item as FileSystem));
+                this.branch.filesSysyem.Add((item as FileSystem));
 
             }
             Console.WriteLine("I passed from Merge");
@@ -78,6 +82,11 @@
         public void Review()
         {
 
+        }
+        public void Add(FileSystem file) 
+        { 
+            file.FatherBranch= this;
+            this.branch.filesSysyem.Add(file);
         }
         #endregion
     }

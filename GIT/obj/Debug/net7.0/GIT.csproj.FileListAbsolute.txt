@@ -13,3 +13,18 @@ H:\GIT\GITProject\GIT\obj\Debug\net7.0\refint\GIT.dll
 H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.pdb
 H:\GIT\GITProject\GIT\obj\Debug\net7.0\GIT.genruntimeconfig.cache
 H:\GIT\GITProject\GIT\obj\Debug\net7.0\ref\GIT.dll
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\bin\Debug\net7.0\GIT.exe
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\bin\Debug\net7.0\GIT.deps.json
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\bin\Debug\net7.0\GIT.runtimeconfig.json
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\bin\Debug\net7.0\GIT.dll
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\bin\Debug\net7.0\GIT.pdb
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.AssemblyReference.cache
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfoInputs.cache
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfo.cs
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.CoreCompileInputs.cache
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.dll
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\refint\GIT.dll
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.pdb
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.genruntimeconfig.cache
+C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\ref\GIT.dll

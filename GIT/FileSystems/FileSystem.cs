@@ -11,7 +11,9 @@ internal abstract class FileSystem : IGitItem
         Name = name;
         Size = size;
         curentState = new Draftstate(this);
+       
     }
+    public Branch FatherBranch { get; set; }
     List<FileSystem> file= new List<FileSystem>();
     #endregion
 
@@ -53,6 +55,9 @@ internal abstract class FileSystem : IGitItem
     {
         if (this.curentState.GetType() == typeof(Draftstate))
         {
+            Console.WriteLine("enter commit name");
+            string CommitName=Console.ReadLine();
+            this.FatherBranch.commit.Add(CommitName);
             Console.WriteLine("I pass to commite state");
             this.curentState.underReview();
         }
