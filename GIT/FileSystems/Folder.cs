@@ -58,6 +58,42 @@ internal class Folder : FileSystem
         }
         return s;
     }
+
+    public Files GetFile(string name)
+    {
+        Files res;
+        foreach (var item in folders)
+        {
+            if (item.GetType() == typeof(Files))
+            {
+                if (item.Name == name)
+                {
+                    return (Files)item;
+                }
+                return null;
+            }
+            res = ((Folder)item).GetFile(name);
+            if (res != null)
+            {
+                return res;
+            }
+        }
+        return null;
+    }
+
+    public void recorsFile()
+    {
+        foreach (var item in folders)
+        {
+            if (item.GetType() == typeof(Files))
+                item.Review();
+            else
+            {
+                item.Review();
+                (item as Folder).recorsFile();
+            }
+        }
+    }
     #endregion
 
 }

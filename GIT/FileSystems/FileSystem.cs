@@ -1,4 +1,6 @@
-﻿namespace GIT.FileSystems;
+﻿using GIT.Memento;
+
+namespace GIT.FileSystems;
 
 internal abstract class FileSystem : IGitItem
 {
@@ -6,15 +8,16 @@ internal abstract class FileSystem : IGitItem
     public State curentState { get; set; }
     public string Name { get; set; }
     public double Size { get; set; }
+    public Branch FatherBranch { get; set; }
+    public IMemento fileHistory { get; set; }
     public FileSystem(string name, double size)
     {
         Name = name;
         Size = size;
         curentState = new Draftstate(this);
-       
+        fileHistory = new FileStateMemento();
+
     }
-    public Branch FatherBranch { get; set; }
-    List<FileSystem> file= new List<FileSystem>();
     #endregion
 
     #region function
@@ -58,6 +61,7 @@ internal abstract class FileSystem : IGitItem
             Console.WriteLine("enter commit name");
             string CommitName=Console.ReadLine();
             this.FatherBranch.commit.Add(CommitName);
+            fileHistory.save(this);
             Console.WriteLine("I pass to commite state");
             this.curentState.underReview();
         }
@@ -81,8 +85,11 @@ internal abstract class FileSystem : IGitItem
             case State:
                 throw new InvalidStateException("you dont showld to commited");
         }
-       
+        this.Name = fileHistory.restore().Name;
+        this.Size = fileHistory.restore().Size;
+        this.curentState = fileHistory.restore().curentState;
 
     }
+
     #endregion
 }

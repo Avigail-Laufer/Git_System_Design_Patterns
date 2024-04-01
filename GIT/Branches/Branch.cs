@@ -81,6 +81,18 @@
         }
         public void Review()
         {
+            repository.Notify();
+            foreach (var file in branch.filesSysyem)
+            {
+               if(file.GetType()==typeof(Files))
+                {
+                    file.Review();
+                }
+                else
+                {
+                    (file as Folder).recorsFile();
+                }
+            }
 
         }
         public void Add(FileSystem file) 
@@ -88,6 +100,60 @@
             file.FatherBranch= this;
             this.branch.filesSysyem.Add(file);
         }
+
+        //public Files GetFile(string name)
+        //{
+
+        //    Files res;
+        //    foreach (var branch in Children)
+        //    {
+        //        if (branch.GetType() == typeof(Files))
+        //        {
+        //            if (branch.Value.Name == name)
+        //            {
+        //                return (Files)branch.Value;
+        //            }
+        //            return null;
+        //        }
+        //        if (branch.GetType() == typeof(Folder))
+        //        {
+        //            res = ((Folder)branch.Value).GetFile(name);
+        //        }
+        //        else res = ((Branch)branch.Value).GetFile(name);
+        //        if (res != null)
+        //        {
+        //            return res;
+        //        }
+        //    }
+
+        //    return null;
+        //}
+
+        //public Folder GetFolder(string name)
+        //{
+        //    Folder res = null;
+        //    foreach (var branch in Children)
+        //    {
+        //        if (branch.GetType() == typeof(Folder))
+        //        {
+        //            if (branch.Value.Name == name)
+        //            {
+        //                return (Folder)branch.Value;
+        //            }
+        //            return null;
+        //        }
+        //        if (branch.GetType() == typeof(Branch))
+        //        {
+        //            res = ((Branch)branch.Value).GetFolder(name);
+        //        }
+        //        if (res != null)
+        //        {
+        //            return res;
+        //        }
+        //    }
+
+        //    return null;
+        //}
         #endregion
     }
 
