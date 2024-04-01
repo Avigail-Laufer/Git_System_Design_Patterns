@@ -15,7 +15,7 @@ namespace GIT
         {
             branchShared = new Dictionary<string, BranchShared>();
         }
-        public BranchShared GetEllipseDesign(string name)
+        public BranchShared GetBranchShared(string name)
         {
             string designKey =name;
 

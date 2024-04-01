@@ -52,7 +52,8 @@ internal abstract class FileSystem : IGitItem
     }
     public void Review()
     {
-
+      curentState.underReview();
+        
     }
     public void Commit()
     {

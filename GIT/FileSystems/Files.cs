@@ -12,6 +12,7 @@ internal class Files : FileSystem
     #region function
     public override string ShowDetails(int depth)
     => $"{base.ShowDetails(depth)}{nameof(File)}- name: {Name}, size: {Size}KB";
+
     #endregion
 
 }

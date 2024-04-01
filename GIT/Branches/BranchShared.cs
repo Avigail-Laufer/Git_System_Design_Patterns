@@ -8,8 +8,13 @@ namespace GIT.Branches
 {
     internal class BranchShared
     {
-        public double Size { get; set; }
+     
         public List<FileSystem> filesSysyem { get; set; }
+        public BranchShared() { 
+            filesSysyem = new List<FileSystem>();
+            
+        }
+
        
 
     }

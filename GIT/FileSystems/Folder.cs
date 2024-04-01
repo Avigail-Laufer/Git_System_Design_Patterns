@@ -24,25 +24,45 @@ internal class Folder : FileSystem
 
     public void Add(FileSystem item)
     {
-       folders.Add(item);
-        this.Size+= item.Size;
+        if (!FatherBranch.isOpenFilesystem)
+        {
+
+            List<FileSystem> file = new List<FileSystem>();
+            FatherBranch.branch.filesSysyem.ForEach(f => file.Add(f));
+            FatherBranch.branch.filesSysyem = file;
+            FatherBranch.isOpenFilesystem = true;
+
+        }
+       
+            folders.Add(item);
+            this.Size += item.Size;
+            FatherBranch.Size += item.Size;
+
+
+
+
     }
 
     public bool Remove(FileSystem item)
     {
-        FileSystem file=folders.Find(item=>item.Name==Name);
+        if (!FatherBranch.isOpenFilesystem)
+        {
+
+            List<FileSystem> newFile = new List<FileSystem>();
+            FatherBranch.branch.filesSysyem.ForEach(f => newFile.Add(f));
+            FatherBranch.branch.filesSysyem = newFile;
+            FatherBranch.isOpenFilesystem = true;
+
+        }
+
+        FileSystem file =folders.Find(item=>item.Name==Name);
         if (file!=null) { 
             folders.Remove(file);
             this.Size-= file.Size;
+            FatherBranch.Size -= file.Size;
             return true;
         }
         return false;
-    }
-
-    public void RemoveAt(int index)
-    {
-       folders.RemoveAt(index);
-        this.Size-= index;
     }
 
     public override string ShowDetails(int depth)
@@ -59,28 +79,6 @@ internal class Folder : FileSystem
         return s;
     }
 
-    public Files GetFile(string name)
-    {
-        Files res;
-        foreach (var item in folders)
-        {
-            if (item.GetType() == typeof(Files))
-            {
-                if (item.Name == name)
-                {
-                    return (Files)item;
-                }
-                return null;
-            }
-            res = ((Folder)item).GetFile(name);
-            if (res != null)
-            {
-                return res;
-            }
-        }
-        return null;
-    }
-
     public void recorsFile()
     {
         foreach (var item in folders)
@@ -94,6 +92,30 @@ internal class Folder : FileSystem
             }
         }
     }
+
+    public FileSystem GetFile(string name)
+    {
+        foreach (var item in folders)
+        {
+            if(item.GetType()==typeof(Files)&&item.Name.Equals(name))
+            {
+               return item; 
+            }
+            else if (item.Name.Equals(name)) {
+                return item;
+            }
+            else
+            {
+                return (item as Folder).GetFile(name);
+            }
+           
+        }
+          return null;
+    }
+
+    
+
+   
     #endregion
 
 }
