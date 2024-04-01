@@ -11,10 +11,7 @@ namespace GIT
         public  List<User> usersSharedReposetories;
 
         List<User> userSuscribe;
-        public Repository()
-        {
-            branchShared = new Dictionary<string, BranchShared>();
-        }
+        public List<Branch> Branches { get; set; }
         public BranchShared GetBranchShared(string name)
         {
             string designKey =name;
@@ -28,12 +25,15 @@ namespace GIT
         }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Branch> Branches { get; set; }
+        
         public Repository(string name, string description)
         {
             Name = name;
             Description = description;
             Branches = new List<Branch>();
+            branchShared = new Dictionary<string, BranchShared>();
+            userSuscribe = new List<User>();
+            usersSharedReposetories = new List<User>();
         }
 
         public void Suscribe(User user)
@@ -62,10 +62,13 @@ namespace GIT
             }
 
         }
-
         public void Notify()
         {
             userSuscribe.ForEach(user => { user.Update(); });
+        }
+        public void AddBranches(Branch branch)
+        {
+            Branches.Add(branch);
         }
 
 

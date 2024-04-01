@@ -5,7 +5,8 @@ namespace GIT.Command
 {
     internal class GitCommandManager
     {
-        Queue<CommandsOnBranch> TaskToExecute; 
+        Queue<CommandsOnBranch> TaskToExecute=new Queue<CommandsOnBranch>(); 
+
         public void RunTheTask(CommandsOnBranch command)
         {
             TaskToExecute.Enqueue(command);

@@ -9,7 +9,7 @@
         #region function
         public override void Excute()
         {
-            throw new NotImplementedException();
+           ( branch as Branch).Clone();
         }
         #endregion
     }

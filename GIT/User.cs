@@ -32,7 +32,7 @@
            
             
         }
-        public void Add(Repository repository)
+        public void AddRep(Repository repository)
         {
             this.repositories.Add(repository);
             repository.usersSharedReposetories.Add(this);

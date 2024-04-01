@@ -13,10 +13,11 @@ namespace GIT.Branches
         public Repository repository;
         public double Size { get; set; }
         public bool isOpenFilesystem { get; set; }
-        public Branch(string name)
+        public Branch(string name,Repository repository)
         {
             Name = name;
             ManufacturingDate = DateTime.Now;
+            this.repository = repository;
             branch = repository.GetBranchShared(Name);
             commit = new List<string>();
             isOpenFilesystem = false;
