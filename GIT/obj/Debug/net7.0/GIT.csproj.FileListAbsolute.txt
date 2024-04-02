@@ -28,3 +28,18 @@ C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\refi
 C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.pdb
 C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\GIT.genruntimeconfig.cache
 C:\Users\The user\Desktop\לימודים ו\GITProject\GIT\obj\Debug\net7.0\ref\GIT.dll
+H:\GITProject\GIT\bin\Debug\net7.0\GIT.exe
+H:\GITProject\GIT\bin\Debug\net7.0\GIT.deps.json
+H:\GITProject\GIT\bin\Debug\net7.0\GIT.runtimeconfig.json
+H:\GITProject\GIT\bin\Debug\net7.0\GIT.dll
+H:\GITProject\GIT\bin\Debug\net7.0\GIT.pdb
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.AssemblyReference.cache
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.GeneratedMSBuildEditorConfig.editorconfig
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfoInputs.cache
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.AssemblyInfo.cs
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.csproj.CoreCompileInputs.cache
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.dll
+H:\GITProject\GIT\obj\Debug\net7.0\refint\GIT.dll
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.pdb
+H:\GITProject\GIT\obj\Debug\net7.0\GIT.genruntimeconfig.cache
+H:\GITProject\GIT\obj\Debug\net7.0\ref\GIT.dll

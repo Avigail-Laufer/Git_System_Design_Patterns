@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "H:\\GIT\\GITProject\\GIT\\GIT.csproj": {}
+    "H:\\GITProject\\GIT\\GIT.csproj": {}
   },
   "projects": {
-    "H:\\GIT\\GITProject\\GIT\\GIT.csproj": {
+    "H:\\GITProject\\GIT\\GIT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\GIT\\GITProject\\GIT\\GIT.csproj",
+        "projectUniqueName": "H:\\GITProject\\GIT\\GIT.csproj",
         "projectName": "GIT",
-        "projectPath": "H:\\GIT\\GITProject\\GIT\\GIT.csproj",
+        "projectPath": "H:\\GITProject\\GIT\\GIT.csproj",
         "packagesPath": "C:\\Users\\לאופר אביגיל צירל\\.nuget\\packages\\",
-        "outputPath": "H:\\GIT\\GITProject\\GIT\\obj\\",
+        "outputPath": "H:\\GITProject\\GIT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\לאופר אביגיל צירל\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -55,7 +55,7 @@ internal class Folder : FileSystem
 
         }
 
-        FileSystem file =folders.Find(item=>item.Name==Name);
+        FileSystem file = folders.FirstOrDefault(items => items.Name == item.Name);
         if (file!=null) { 
             folders.Remove(file);
             this.Size-= file.Size;
