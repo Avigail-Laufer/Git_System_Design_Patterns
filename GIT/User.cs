@@ -1,8 +1,9 @@
 ﻿namespace GIT
 {
-    internal class User
+    internal class User:Iclone
     {
         #region prototype
+
         public string Name { get; set; }
         public string Email { get; set; }
         public int Age { get; set; }
@@ -16,9 +17,6 @@
             Email = email;
             Age = age;
             Password = password;
-
-
-
         }
 
         public void Sharing(string name, User user)
@@ -39,13 +37,21 @@
             
            
         }
-
         public void Update () 
         {
             Console.WriteLine($"user: {this.Name} Received a revew request ");
         }
-       
+        public Branch Clone(Branch branch)
+        {
 
+            Branch newBranch = new Branch();
+            newBranch.Name = branch.Name;
+            newBranch.ManufacturingDate = DateTime.Now;
+            newBranch.repository = branch.repository;
+            newBranch.branch = branch.repository.GetBranchShared(branch.Name);
+            newBranch.isOpenFilesystem = false;
+            return newBranch;
+        }
 
         #endregion
     }

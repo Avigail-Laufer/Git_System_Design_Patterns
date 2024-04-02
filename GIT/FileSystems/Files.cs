@@ -2,7 +2,8 @@
 internal class Files : FileSystem
 {
     #region propertys
-    
+
+    public string context { get; set; }
     public Files(string name, double size) : base(name, size)
     {
        
@@ -13,6 +14,10 @@ internal class Files : FileSystem
     public override string ShowDetails(int depth)
     => $"{base.ShowDetails(depth)}{nameof(File)}- name: {Name}, size: {Size}KB";
 
+    public void AddContext(string context) 
+    { 
+        this.context += context;
+    }
     #endregion
 
 }

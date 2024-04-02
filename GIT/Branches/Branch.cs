@@ -1,13 +1,15 @@
-﻿using System.Xml.Linq;
+﻿using GIT.FileSystems;
+using System.Xml.Linq;
 
 namespace GIT.Branches
 {
-    internal class Branch : ICloneable, IGitItem
+    internal class Branch : IGitItem
     {
         #region propertys
         public string Name { get; set; }
         public List<string> commit { get; set; }
         public DateTime ManufacturingDate { get; set; }
+
         public BranchShared branch;
 
         public Repository repository;
@@ -20,7 +22,7 @@ namespace GIT.Branches
             this.repository = repository;
             branch = repository.GetBranchShared(Name);
             commit = new List<string>();
-            isOpenFilesystem = false;
+            isOpenFilesystem =true;
         }
         public Branch() { }
 
@@ -28,16 +30,7 @@ namespace GIT.Branches
         #endregion
 
         #region function
-        public object Clone()
-        {
-            Branch newBranch = new Branch();
-            newBranch.Name = this.Name;
-            newBranch.ManufacturingDate = DateTime.Now;
-            newBranch.repository = this.repository;
-            newBranch.branch = repository.GetBranchShared(Name);
-            return newBranch;
-
-        }
+        
         public bool Delete(Repository repository)
         {
             Console.WriteLine("you soure that you want to delete this branch");
@@ -54,6 +47,7 @@ namespace GIT.Branches
         }
         public bool Merge(IGitItem item, Repository project)
         {
+            
             if (item.GetType() == typeof(Branch))
             {
 
@@ -67,6 +61,7 @@ namespace GIT.Branches
                         // 
                         this.branch.filesSysyem.Remove(fs);
                     this.branch.filesSysyem.Add(f);
+                   
 
 
                 });
@@ -83,8 +78,21 @@ namespace GIT.Branches
         }
         public void Commit()
         {
-
-            Console.WriteLine("I pass to commite state");
+            //Console.WriteLine("enter commit name");
+            //string CommitName = Console.ReadLine();
+            //if (CommitName!=null) { commit.Add(CommitName); }
+            foreach (var file in branch.filesSysyem)
+            {
+                if (file.GetType() == typeof(Files))
+                {
+                   file.ChangeState(new CommitState(file));
+                }
+                else
+                {
+                    (file as Folder).recorsFileToCommit();
+                }
+            }
+            Console.WriteLine("I pass to commit state");
         }
         public void Review()
         {
@@ -102,10 +110,22 @@ namespace GIT.Branches
             }
 
         }
-        public void Add(FileSystem file)
+        public void Add(FileSystem item)
         {
-            file.FatherBranch = this;
-            this.branch.filesSysyem.Add(file);
+           
+            if (!this.isOpenFilesystem)
+            {
+
+                List<FileSystem> file = new List<FileSystem>();
+                this.branch.filesSysyem.ForEach(f => file.Add(f));
+                this.branch.filesSysyem = file;
+                this.isOpenFilesystem = true;
+            }
+
+          
+            this.Size += item.Size;
+            item.FatherBranch = this;
+            this.branch.filesSysyem.Add(item);
         }
         public FileSystem GetFileSystem(string name)
         {

@@ -24,6 +24,7 @@ internal class Folder : FileSystem
 
     public void Add(FileSystem item)
     {
+        item.FatherBranch = this.FatherBranch;
         if (!FatherBranch.isOpenFilesystem)
         {
 
@@ -88,6 +89,19 @@ internal class Folder : FileSystem
             else
             {
                 item.Review();
+                (item as Folder).recorsFile();
+            }
+        }
+    }
+    public void recorsFileToCommit()
+    {
+        foreach (var item in folders)
+        {
+            if (item.GetType() == typeof(Files))
+                item.ChangeState(new CommitState(item));
+            else
+            {
+                item.ChangeState(new CommitState(item));
                 (item as Folder).recorsFile();
             }
         }

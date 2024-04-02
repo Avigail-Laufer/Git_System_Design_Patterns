@@ -44,7 +44,6 @@ internal abstract class FileSystem : IGitItem
             this.curentState.ErorState();
             return false;
         }
-        //צריך להעביר את התוכן ולמחוק
         FileSystem f = (FileSystem)item;
         f.curentState.Staged();
         Console.WriteLine("I passed from Merge");
@@ -64,7 +63,8 @@ internal abstract class FileSystem : IGitItem
             this.FatherBranch.commit.Add(CommitName);
             fileHistory.save(this);
             Console.WriteLine("I pass to commite state");
-            this.curentState.underReview();
+            this.curentState.Commit();
+          
         }
         else
         {
@@ -86,9 +86,10 @@ internal abstract class FileSystem : IGitItem
             case State:
                 throw new InvalidStateException("you dont showld to commited");
         }
-        this.Name = fileHistory.restore().Name;
-        this.Size = fileHistory.restore().Size;
-        this.curentState = fileHistory.restore().curentState;
+        if (this.GetType() == typeof(Files))
+            (this as Files).context = fileHistory.restore();
+        else
+           this.Name=fileHistory.restore();
 
     }
 

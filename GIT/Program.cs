@@ -30,8 +30,6 @@ teacherUser.AddRep(java8);
 teacherUser.AddRep(sql);
 #endregion
 
-
-
 #region folder
 Folder MainFolder = new Folder("src", 2.6);
 Folder componts = new Folder("componts", 2.3);
@@ -61,12 +59,47 @@ componts.Add(BookForm);
 componts.Add(BookDetails);
 services.Add(bookService);
 utils.Add(formatDate);
-#endregion
-GitCommandManager commandManager = GitCommandManager.GetInstance();
-CreateCommand createBranch = new CreateCommand(branch1);
 
-commandManager.RunTheTask(createBranch);
+//app.AddContext("ggggggggggggggggggggggg");
+//app.Commit();
+//app.ChangeState(new Draftstate(app));
+//app.AddContext("jkkkkkkkkkkkkkkkkkkkkkkkkk");
+//app.Commit();
+#endregion
+
+
+
+#region Delete files
 Console.WriteLine(MainFolder.Remove(app));
+Console.WriteLine(MainFolder.Remove(app));
+Console.WriteLine(MainFolder.Remove(services));
+#endregion
+
+#region clone
+Branch branch5 = studentUser.Clone(branch4);
+Branch branch6 = studentUser.Clone(branch3);
+branch6.Add(new Folder("hhhh",0));
+angular.Suscribe(studentUser);
+#endregion
+
+#region GitCommandManager
+//אין אפשרות לעבור בין מצבים אלו
+//index.curentState.underReview();
+GitCommandManager commandManager = GitCommandManager.GetInstance();
+CommitCommand commitCommand1 = new CommitCommand(index);
+CommitCommand commitCommand2 = new CommitCommand(branch5);
+MergeCommand mergeCommand3 = new MergeCommand(branch5,branch1,angular);
+ReviewCommand reviewCommand=new ReviewCommand(branch5);
+DeleteCommand deleteCommand1 = new DeleteCommand(branch1,angular);
+commandManager.RunTheTask(commitCommand1);
+commandManager.RunTheTask(commitCommand2);
+commandManager.RunTheTask(mergeCommand3);
+commandManager.RunTheTask(reviewCommand);
+commandManager.RunTheTask(deleteCommand1);
+
+
+#endregion
+
 
 
 

@@ -16,6 +16,7 @@ namespace GIT.Command
             TaskToExecute.Enqueue(command);
             var commandToExecute = TaskToExecute.Dequeue();
             commandToExecute.Excute();
+           
         }
         public static GitCommandManager GetInstance()
         {

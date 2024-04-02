@@ -10,7 +10,7 @@ namespace GIT.Memento
     {
         public void save(FileSystem file);
 
-        public FileSystem restore();
+        public string restore();
        
     }
 }
