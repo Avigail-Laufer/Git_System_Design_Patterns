@@ -4,8 +4,9 @@
 internal class Folder : FileSystem
 {
     #region proprtys
-    public List<FileSystem> folders { get;private set; }
-    public Folder(string name,double size):base(name,size) {
+    public List<FileSystem> folders { get; private set; }
+    public Folder(string name, double size) : base(name, size)
+    {
         folders = new List<FileSystem>();
     }
     #endregion
@@ -15,63 +16,54 @@ internal class Folder : FileSystem
     {
         folders.Clear();
     }
-
     public bool Contains(FileSystem item)
     {
-        if (folders.Contains(item)){ return true; }
+        if (folders.Contains(item)) { return true; }
         return false;
     }
-
     public void Add(FileSystem item)
     {
         item.FatherBranch = this.FatherBranch;
         if (!FatherBranch.isOpenFilesystem)
         {
-
             List<FileSystem> file = new List<FileSystem>();
             FatherBranch.branch.filesSysyem.ForEach(f => file.Add(f));
             FatherBranch.branch.filesSysyem = file;
             FatherBranch.isOpenFilesystem = true;
-
         }
-       
-            folders.Add(item);
-            this.Size += item.Size;
-            FatherBranch.Size += item.Size;
+
+        folders.Add(item);
+        this.Size += item.Size;
+        FatherBranch.Size += item.Size;
 
 
 
 
     }
-
     public bool Remove(FileSystem item)
     {
         if (!FatherBranch.isOpenFilesystem)
         {
-
             List<FileSystem> newFile = new List<FileSystem>();
             FatherBranch.branch.filesSysyem.ForEach(f => newFile.Add(f));
             FatherBranch.branch.filesSysyem = newFile;
             FatherBranch.isOpenFilesystem = true;
-
         }
 
         FileSystem file = folders.FirstOrDefault(items => items.Name == item.Name);
-        if (file!=null) { 
+        if (file != null)
+        {
             folders.Remove(file);
-            this.Size-= file.Size;
+            this.Size -= file.Size;
             FatherBranch.Size -= file.Size;
             return true;
         }
         return false;
     }
-
     public override string ShowDetails(int depth)
     {
         string indent = base.ShowDetails(depth);
-        string s=$"{indent}{nameof(Folder)}- name: {Name}, size: {Size}KB";
-       
-
+        string s = $"{indent}{nameof(Folder)}- name: {Name}, size: {Size}KB";
         foreach (var item in folders)
         {
             s += "\n";
@@ -79,7 +71,6 @@ internal class Folder : FileSystem
         }
         return s;
     }
-
     public void recorsFile()
     {
         foreach (var item in folders)
@@ -95,41 +86,39 @@ internal class Folder : FileSystem
     }
     public void recorsFileToCommit()
     {
+        
         foreach (var item in folders)
         {
             if (item.GetType() == typeof(Files))
-                item.ChangeState(new CommitState(item));
+                item.curentState.Commit();
             else
             {
-                item.ChangeState(new CommitState(item));
+                item.curentState.Commit();
                 (item as Folder).recorsFile();
             }
         }
     }
-
     public FileSystem GetFile(string name)
     {
         foreach (var item in folders)
         {
-            if(item.GetType()==typeof(Files)&&item.Name.Equals(name))
+            if (item.GetType() == typeof(Files) && item.Name.Equals(name))
             {
-               return item; 
+                return item;
             }
-            else if (item.Name.Equals(name)) {
+            else if (item.Name.Equals(name))
+            {
                 return item;
             }
             else
             {
                 return (item as Folder).GetFile(name);
             }
-           
+
         }
-          return null;
+        return null;
     }
 
-    
-
-   
     #endregion
 
 }

@@ -21,10 +21,6 @@
            file.ChangeState(new ErorStates(file));
         }
 
-        public override void GetMessage()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Staged()
         {

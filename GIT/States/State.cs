@@ -10,7 +10,6 @@
         #endregion
 
         #region function
-        public abstract void GetMessage();
         public abstract void ErorState();
         public abstract void Commit();
         public abstract void underReview();

@@ -10,7 +10,7 @@
             if(file.GetType()==typeof (Files))
             historyFile.Push((file as Files).context);
             else
-                historyFile.Push((file as Folder).Name);
+            historyFile.Push((file as Folder).Name);
         }
         public string restore()
         {

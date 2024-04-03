@@ -9,20 +9,18 @@ namespace GIT.Branches
         public string Name { get; set; }
         public List<string> commit { get; set; }
         public DateTime ManufacturingDate { get; set; }
-
         public BranchShared branch;
-
         public Repository repository;
         public double Size { get; set; }
         public bool isOpenFilesystem { get; set; }
-        public Branch(string name,Repository repository)
+        public Branch(string name, Repository repository)
         {
             Name = name;
             ManufacturingDate = DateTime.Now;
             this.repository = repository;
             branch = repository.GetBranchShared(Name);
             commit = new List<string>();
-            isOpenFilesystem =true;
+            isOpenFilesystem = true;
         }
         public Branch() { }
 
@@ -30,7 +28,7 @@ namespace GIT.Branches
         #endregion
 
         #region function
-        
+
         public bool Delete(Repository repository)
         {
             Console.WriteLine("you soure that you want to delete this branch");
@@ -42,12 +40,13 @@ namespace GIT.Branches
             }
             else
             {
+                Console.WriteLine("The request was not accepted");
                 return false;
             }
         }
         public bool Merge(IGitItem item, Repository project)
         {
-            
+
             if (item.GetType() == typeof(Branch))
             {
 
@@ -56,13 +55,12 @@ namespace GIT.Branches
                 {// תבדןק אם קים קבוץ בעל אותו שם בנוכחי
                     var fs = this.branch.filesSysyem.Find(ff => ff.Name == f.Name);
                     //אם קים , תמחק אותו
-                    if (fs != null)
-                        // תמחק אותו
-                        // 
+                    if (fs != null && fs.curentState.GetType() == typeof(CommitState))
+                    {
                         this.branch.filesSysyem.Remove(fs);
-                    this.branch.filesSysyem.Add(f);
-                   
-
+                        this.branch.filesSysyem.Add(f);
+                    }
+                    else if (fs != null) { fs.curentState.ErorState(); }
 
                 });
 
@@ -85,10 +83,11 @@ namespace GIT.Branches
             {
                 if (file.GetType() == typeof(Files))
                 {
-                   file.ChangeState(new CommitState(file));
+                    file.curentState.Commit();
                 }
                 else
                 {
+                    (file as Folder).curentState.Commit();
                     (file as Folder).recorsFileToCommit();
                 }
             }
@@ -112,7 +111,7 @@ namespace GIT.Branches
         }
         public void Add(FileSystem item)
         {
-           
+
             if (!this.isOpenFilesystem)
             {
 
@@ -122,7 +121,7 @@ namespace GIT.Branches
                 this.isOpenFilesystem = true;
             }
 
-          
+
             this.Size += item.Size;
             item.FatherBranch = this;
             this.branch.filesSysyem.Add(item);
@@ -140,11 +139,9 @@ namespace GIT.Branches
             }
             return null;
         }
-        
-        
-      #endregion
-       
 
+
+        #endregion
 
     }
 }

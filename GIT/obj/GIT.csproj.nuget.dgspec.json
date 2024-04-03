@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "H:\\GIT\\GITProject\\GIT\\GIT.csproj": {}
+    "C:\\Users\\The user\\Desktop\\GITProject\\GIT\\GIT.csproj": {}
   },
   "projects": {
-    "H:\\GIT\\GITProject\\GIT\\GIT.csproj": {
+    "C:\\Users\\The user\\Desktop\\GITProject\\GIT\\GIT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\GIT\\GITProject\\GIT\\GIT.csproj",
+        "projectUniqueName": "C:\\Users\\The user\\Desktop\\GITProject\\GIT\\GIT.csproj",
         "projectName": "GIT",
-        "projectPath": "H:\\GIT\\GITProject\\GIT\\GIT.csproj",
-        "packagesPath": "C:\\Users\\לאופר אביגיל צירל\\.nuget\\packages\\",
-        "outputPath": "H:\\GIT\\GITProject\\GIT\\obj\\",
+        "projectPath": "C:\\Users\\The user\\Desktop\\GITProject\\GIT\\GIT.csproj",
+        "packagesPath": "C:\\Users\\The user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\The user\\Desktop\\GITProject\\GIT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\לאופר אביגיל צירל\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\The user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.117\\RuntimeIdentifierGraph.json"
         }
       }
     }

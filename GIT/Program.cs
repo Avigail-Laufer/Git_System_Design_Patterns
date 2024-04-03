@@ -67,19 +67,14 @@ utils.Add(formatDate);
 //app.Commit();
 #endregion
 
-
-
-#region Delete files
-Console.WriteLine(MainFolder.Remove(app));
-Console.WriteLine(MainFolder.Remove(app));
-Console.WriteLine(MainFolder.Remove(services));
-#endregion
-
 #region clone
-Branch branch5 = studentUser.Clone(branch4);
-Branch branch6 = studentUser.Clone(branch3);
+Branch branch5 = pytonProject.Clone(branch4);
+Branch branch6 = java8.Clone(branch3);
+pytonProject.AddOther(teacherUser);
+//מראה את יצירת הרשימה 
 branch6.Add(new Folder("hhhh",0));
-angular.Suscribe(studentUser);
+//רפוזתורי שמעונין לקבל התראה כשבראנצים אחרים מבקשים revew
+pytonProject.Suscribe(teacherUser);
 #endregion
 
 #region GitCommandManager
@@ -96,8 +91,6 @@ commandManager.RunTheTask(commitCommand2);
 commandManager.RunTheTask(mergeCommand3);
 commandManager.RunTheTask(reviewCommand);
 commandManager.RunTheTask(deleteCommand1);
-
-
 #endregion
 
 

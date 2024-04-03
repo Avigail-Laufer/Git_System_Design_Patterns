@@ -22,10 +22,6 @@ namespace GIT.States
             throw new InvalidCastException("You are in the ErorState state");
         }
 
-        public override void GetMessage()
-        {
-            throw new NotImplementedException();
-        }
 
         public override void Staged()
         {
