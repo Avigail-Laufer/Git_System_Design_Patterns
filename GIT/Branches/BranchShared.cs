@@ -9,9 +9,9 @@ namespace GIT.Branches
     internal class BranchShared
     {
      
-        public List<FileSystem> filesSysyem { get; set; }
+        public List<FileSystem> FilesSysyem { get; set; }
         public BranchShared() { 
-            filesSysyem = new List<FileSystem>();
+            FilesSysyem = new List<FileSystem>();
             
         }
 

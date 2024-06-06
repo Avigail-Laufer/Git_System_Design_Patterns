@@ -10,11 +10,11 @@
         #endregion
 
         #region function
-        public abstract void ErorState();
+        public abstract void Error();
         public abstract void Commit();
         public abstract void underReview();
         public abstract void Staged();
-        public abstract void Darft();
+        public abstract void Draft();
 
 
         #endregion

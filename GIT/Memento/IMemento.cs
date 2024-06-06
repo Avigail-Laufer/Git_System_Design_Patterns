@@ -8,9 +8,9 @@ namespace GIT.Memento
 {
     internal interface IMemento
     {
-        public void save(FileSystem file);
+        public void Save(FileSystem file);
 
-        public string restore();
+        public string Restore();
        
     }
 }

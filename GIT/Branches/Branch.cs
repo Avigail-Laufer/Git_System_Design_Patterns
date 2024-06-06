@@ -7,20 +7,20 @@ namespace GIT.Branches
     {
         #region propertys
         public string Name { get; set; }
-        public List<string> commit { get; set; }
+        public List<string> Commits { get; set; }
         public DateTime ManufacturingDate { get; set; }
         public BranchShared branch;
         public Repository repository;
         public double Size { get; set; }
-        public bool isOpenFilesystem { get; set; }
+        public bool IsOpenFilesystem { get; set; }
         public Branch(string name, Repository repository)
         {
             Name = name;
             ManufacturingDate = DateTime.Now;
             this.repository = repository;
             branch = repository.GetBranchShared(Name);
-            commit = new List<string>();
-            isOpenFilesystem = true;
+            Commits = new List<string>();
+           IsOpenFilesystem = true;
         }
         public Branch() { }
 
@@ -51,16 +51,16 @@ namespace GIT.Branches
             {
 
                 // עבור כל קובץ שנמצא באיטם
-                (item as Branch).branch.filesSysyem.ForEach(f =>
+                (item as Branch).branch.FilesSysyem.ForEach(f =>
                 {// תבדןק אם קים קבוץ בעל אותו שם בנוכחי
-                    var fs = this.branch.filesSysyem.Find(ff => ff.Name == f.Name);
+                    var fs = this.branch.FilesSysyem.Find(ff => ff.Name == f.Name);
                     //אם קים , תמחק אותו
                     if (fs != null && fs.curentState.GetType() == typeof(CommitState))
                     {
-                        this.branch.filesSysyem.Remove(fs);
-                        this.branch.filesSysyem.Add(f);
+                        this.branch.FilesSysyem.Remove(fs);
+                        this.branch.FilesSysyem.Add(f);
                     }
-                    else if (fs != null) { fs.curentState.ErorState(); }
+                    else if (fs != null) { fs.curentState.Error(); }
 
                 });
 
@@ -68,7 +68,7 @@ namespace GIT.Branches
             }
             else
             {
-                this.branch.filesSysyem.Add((item as FileSystem));
+                this.branch.FilesSysyem.Add((item as FileSystem));
 
             }
             Console.WriteLine("I passed from Merge");
@@ -79,7 +79,7 @@ namespace GIT.Branches
             //Console.WriteLine("enter commit name");
             //string CommitName = Console.ReadLine();
             //if (CommitName!=null) { commit.Add(CommitName); }
-            foreach (var file in branch.filesSysyem)
+            foreach (var file in branch.FilesSysyem)
             {
                 if (file.GetType() == typeof(Files))
                 {
@@ -88,7 +88,7 @@ namespace GIT.Branches
                 else
                 {
                     (file as Folder).curentState.Commit();
-                    (file as Folder).recorsFileToCommit();
+                    (file as Folder).RecorsFileToCommit();
                 }
             }
             Console.WriteLine("I pass to commit state");
@@ -96,7 +96,7 @@ namespace GIT.Branches
         public void Review()
         {
             repository.Notify();
-            foreach (var file in branch.filesSysyem)
+            foreach (var file in branch.FilesSysyem)
             {
                 if (file.GetType() == typeof(Files))
                 {
@@ -104,7 +104,7 @@ namespace GIT.Branches
                 }
                 else
                 {
-                    (file as Folder).recorsFile();
+                    (file as Folder).RecorsFile();
                 }
             }
 
@@ -112,23 +112,23 @@ namespace GIT.Branches
         public void Add(FileSystem item)
         {
 
-            if (!this.isOpenFilesystem)
+            if (!this.IsOpenFilesystem)
             {
 
                 List<FileSystem> file = new List<FileSystem>();
-                this.branch.filesSysyem.ForEach(f => file.Add(f));
-                this.branch.filesSysyem = file;
-                this.isOpenFilesystem = true;
+                this.branch.FilesSysyem.ForEach(f => file.Add(f));
+                this.branch.FilesSysyem = file;
+                this.IsOpenFilesystem = true;
             }
 
 
             this.Size += item.Size;
             item.FatherBranch = this;
-            this.branch.filesSysyem.Add(item);
+            this.branch.FilesSysyem.Add(item);
         }
         public FileSystem GetFileSystem(string name)
         {
-            foreach (var item in branch.filesSysyem)
+            foreach (var item in branch.FilesSysyem)
             {
                 if (item.GetType() == typeof(Files) && item.Name.Equals(name))
                 {

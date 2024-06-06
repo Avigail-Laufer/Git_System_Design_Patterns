@@ -2,9 +2,9 @@
 
 namespace GIT.States
 {
-    internal class ErorStates : State
+    internal class ErrorState : State
     {
-        public ErorStates(FileSystem file) : base(file)
+        public ErrorState(FileSystem file) : base(file)
         {
         }
         public override void Commit()
@@ -12,12 +12,12 @@ namespace GIT.States
             file.ChangeState(new Draftstate(file));
         }
 
-        public override void Darft()
+        public override void Draft()
         {
             throw new NotImplementedException();
         }
 
-        public override void ErorState()
+        public override void Error()
         {
             throw new InvalidCastException("You are in the ErorState state");
         }

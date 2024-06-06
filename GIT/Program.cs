@@ -74,7 +74,7 @@ pytonProject.AddOther(teacherUser);
 //מראה את יצירת הרשימה 
 branch6.Add(new Folder("hhhh",0));
 //רפוזתורי שמעונין לקבל התראה כשבראנצים אחרים מבקשים revew
-pytonProject.Suscribe(teacherUser);
+pytonProject.Subscribe(teacherUser);
 #endregion
 
 #region GitCommandManager

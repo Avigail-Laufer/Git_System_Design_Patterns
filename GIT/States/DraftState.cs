@@ -13,14 +13,14 @@
             Console.WriteLine($"the file - {file.Name} pass to commit state");
         }
 
-        public override void Darft()
+        public override void Draft()
         {
             throw new InvalidStateException("You are in the desired state ");
         }
 
-        public override void ErorState()
+        public override void Error()
         {
-            file.ChangeState(new ErorStates(file));
+            file.ChangeState(new ErrorState(file));
         }
 
         public override void Staged()

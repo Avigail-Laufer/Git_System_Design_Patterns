@@ -36,9 +36,7 @@ namespace GIT
             }
             return branchShared[designKey];
         }
-
-
-        public void Suscribe(User user)
+        public void Subscribe(User user)
         {
             if (usersSharedReposetories.Contains(user))
             {
@@ -51,7 +49,7 @@ namespace GIT
             }
 
         }
-        public void UnSuscribe(User user)
+        public void UnSubscribe(User user)
         {
             if (usersSharedReposetories.Contains(user))
             {
@@ -80,7 +78,7 @@ namespace GIT
             newBranch.ManufacturingDate = DateTime.Now;
             newBranch.repository = this;
             newBranch.branch = branch.repository.GetBranchShared(branch.Name);
-            newBranch.isOpenFilesystem = false;
+            newBranch.IsOpenFilesystem = false;
             this.AddBranches(newBranch);
             return newBranch;
         }

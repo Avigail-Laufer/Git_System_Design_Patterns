@@ -36,12 +36,12 @@ internal abstract class FileSystem : IGitItem
 
         if (this.GetType()==typeof(File)&&item.GetType()!=typeof(File)|| this.GetType() == typeof(Folder) && item.GetType() != typeof(Branch))
         {
-            this.curentState.ErorState();
+            this.curentState.Error();
             return false;
         }
         if(this.curentState.GetType()==typeof(CommitState))
         {
-            this.curentState.ErorState();
+            this.curentState.Error();
             return false;
         }
         FileSystem f = (FileSystem)item;
@@ -60,8 +60,8 @@ internal abstract class FileSystem : IGitItem
         {
             Console.WriteLine("enter commit name");
             string CommitName=Console.ReadLine();
-            this.FatherBranch.commit.Add(CommitName);
-            fileHistory.save(this);
+            this.FatherBranch.Commits.Add(CommitName);
+            fileHistory.Save(this);
             Console.WriteLine("I pass to commite state");
             this.curentState.Commit();
           
@@ -69,7 +69,7 @@ internal abstract class FileSystem : IGitItem
         else
         {
             Console.WriteLine("The request failed");
-            this.curentState.ErorState();
+            this.curentState.Error();
         }
 
     }
@@ -87,9 +87,9 @@ internal abstract class FileSystem : IGitItem
                 throw new InvalidStateException("you dont showld to commited");
         }
         if (this.GetType() == typeof(Files))
-            (this as Files).context = fileHistory.restore();
+            (this as Files).Context = fileHistory.Restore();
         else
-           this.Name=fileHistory.restore();
+           this.Name=fileHistory.Restore();
 
     }
 

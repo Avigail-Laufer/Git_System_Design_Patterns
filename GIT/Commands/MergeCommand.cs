@@ -3,19 +3,19 @@
     internal class MergeCommand : CommandsOnBranch
     {
         #region ctor
-        public IGitItem item { get; set; }
-        public Repository project { get; set; }
+        public IGitItem Item { get; set; }
+        public Repository Project { get; set; }
         public MergeCommand(IGitItem b, IGitItem item , Repository project) : base(b)
         {
-            this.item = item;
-            this.project = project;
+            this.Item = item;
+            this.Project = project;
         }
         #endregion
 
         #region function
         public override void Excute()
         {
-            branch.Merge(item,project);
+            branch.Merge(Item,Project);
         }
         #endregion
     }

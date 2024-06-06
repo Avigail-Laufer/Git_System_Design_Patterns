@@ -12,14 +12,14 @@
             throw new InvalidStateException("No permission to switch to Staged state");
         }
 
-        public override void Darft()
+        public override void Draft()
         {
             file.ChangeState(new Draftstate(file));
         }
 
-        public override void ErorState()
+        public override void Error()
         {
-            file.ChangeState(new ErorStates(file));
+            file.ChangeState(new ErrorState(file));
         }
 
         public override void Staged()

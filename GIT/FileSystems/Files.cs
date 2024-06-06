@@ -3,7 +3,7 @@ internal class Files : FileSystem
 {
     #region propertys
 
-    public string context { get; set; }
+    public string Context { get; set; }
     public Files(string name, double size) : base(name, size)
     {
        
@@ -16,7 +16,7 @@ internal class Files : FileSystem
 
     public void AddContext(string context) 
     { 
-        this.context += context;
+        this.Context += context;
     }
     #endregion
 

@@ -5,14 +5,14 @@
         Stack<string> historyFile=new Stack<string>();
         public FileStateMemento() { }
 
-        public void save(FileSystem file)
+        public void Save(FileSystem file)
         { 
             if(file.GetType()==typeof (Files))
-            historyFile.Push((file as Files).context);
+            historyFile.Push((file as Files).Context);
             else
             historyFile.Push((file as Folder).Name);
         }
-        public string restore()
+        public string Restore()
         {
             return historyFile.Pop();
         }
